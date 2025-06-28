@@ -1,7 +1,11 @@
 import React from "react";
 import "./Loading.css";
 
-const Loading: React.FC = () => (
+interface LoadingProps {
+  text?: string;
+}
+
+const Loading: React.FC<LoadingProps> = ({ text }) => (
   <div className="loading-container">
     <svg className="loading-svg" viewBox="0 0 120 120">
       <circle
@@ -63,7 +67,7 @@ const Loading: React.FC = () => (
         fill="#e91e63"
       />
     </svg>
-    <div className="loading-text">Proverlar arasında veri akışı başlatılıyor...</div>
+    <div className="loading-text">{text || "Loading..."}</div>
   </div>
 );
 

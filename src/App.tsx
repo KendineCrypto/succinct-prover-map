@@ -171,6 +171,7 @@ function App() {
   const controlsRef = useRef<any>(null);
   const [flyToTarget, setFlyToTarget] = useState<[number, number, number] | null>(null);
   const [flyToTrigger, setFlyToTrigger] = useState(0);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const typedProvers: Prover[] = proverData.provers.map(prover => ({
@@ -178,6 +179,9 @@ function App() {
       status: prover.status as 'active' | 'inactive' | 'maintenance'
     }));
     setProvers(typedProvers);
+    // Ensure loading lasts at least 3 seconds
+    const timer = setTimeout(() => setLoading(false), 3000);
+    return () => clearTimeout(timer);
   }, []);
 
   // Memoize markers to avoid recalculation on every render
@@ -225,8 +229,8 @@ function App() {
     setShowProverList(prev => !prev);
   }, []);
 
-  if (provers.length === 0) {
-    return <Loading />;
+  if (loading || provers.length === 0) {
+    return <Loading text="Initializing data flow between provers..." />;
   }
 
   function Scene() {
