@@ -49,8 +49,8 @@ A beautiful, interactive 3D globe visualization for tracking Succinct Labs prove
 
 1. **Clone the repository**
 ```bash
-git clone https://github.com/yourusername/succinct-world.git
-cd succinct-world
+git clone https://github.com/KendineCrypto/succinct-prover-map.git
+cd succinct-prover-map
 ```
 
 2. **Install dependencies**
@@ -97,7 +97,7 @@ npm run build
 ## 📁 Project Structure
 
 ```
-succinct-world/
+succinct-prover-map/
 ├── public/                 # Static assets
 │   ├── pink_earth_texture.jpg
 │   └── index.html
@@ -150,7 +150,7 @@ Modify CSS variables in `src/App.css`:
 1. Add to `package.json`:
 ```json
 {
-  "homepage": "https://yourusername.github.io/succinct-world",
+  "homepage": "https://KendineCrypto.github.io/succinct-prover-map",
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
@@ -189,8 +189,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📞 Support
 
-- **Issues**: [GitHub Issues](https://github.com/yourusername/succinct-world/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/yourusername/succinct-world/discussions)
+- **Issues**: [GitHub Issues](https://github.com/KendineCrypto/succinct-prover-map/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/KendineCrypto/succinct-prover-map/discussions)
 - **Email**: your.email@example.com
 
 ---
