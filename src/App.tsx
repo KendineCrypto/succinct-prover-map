@@ -4,6 +4,7 @@ import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import * as THREE from 'three';
 import './App.css';
 import { Globe } from './components/Globe';
+import Loading from './components/Loading';
 import { ProverDetails } from './components/ProverDetails';
 import { ProverMarker } from './components/ProverMarker';
 import proverData from './data/provers.json';
@@ -223,6 +224,10 @@ function App() {
   const toggleProverList = useCallback(() => {
     setShowProverList(prev => !prev);
   }, []);
+
+  if (provers.length === 0) {
+    return <Loading />;
+  }
 
   function Scene() {
     const { camera } = useThree();
