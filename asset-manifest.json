@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/succinct-prover-map/static/css/main.2dcd2219.css",
-    "main.js": "/succinct-prover-map/static/js/main.a21a6975.js",
-    "static/js/453.16160673.chunk.js": "/succinct-prover-map/static/js/453.16160673.chunk.js",
-    "index.html": "/succinct-prover-map/index.html",
-    "main.2dcd2219.css.map": "/succinct-prover-map/static/css/main.2dcd2219.css.map",
-    "main.a21a6975.js.map": "/succinct-prover-map/static/js/main.a21a6975.js.map",
-    "453.16160673.chunk.js.map": "/succinct-prover-map/static/js/453.16160673.chunk.js.map"
+    "main.css": "/KendineCrypto/succinct-prover-map/static/css/main.2dcd2219.css",
+    "main.js": "/KendineCrypto/succinct-prover-map/static/js/main.1da62a54.js",
+    "static/js/453.16160673.chunk.js": "/KendineCrypto/succinct-prover-map/static/js/453.16160673.chunk.js",
+    "index.html": "/KendineCrypto/succinct-prover-map/index.html",
+    "main.2dcd2219.css.map": "/KendineCrypto/succinct-prover-map/static/css/main.2dcd2219.css.map",
+    "main.1da62a54.js.map": "/KendineCrypto/succinct-prover-map/static/js/main.1da62a54.js.map",
+    "453.16160673.chunk.js.map": "/KendineCrypto/succinct-prover-map/static/js/453.16160673.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.2dcd2219.css",
-    "static/js/main.a21a6975.js"
+    "static/js/main.1da62a54.js"
   ]
 }
