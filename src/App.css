@@ -1,38 +1,365 @@
 .App {
-  text-align: center;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.header {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 100;
   color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-.App-link {
-  color: #61dafb;
+.header h1 {
+  margin: 0 0 8px 0;
+  font-size: 2.2rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #FF69B4, #FF1493);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: fadeInScale 0.8s ease-out;
 }
 
-@keyframes App-logo-spin {
+.header p {
+  margin: 0;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 300;
+  animation: fadeInScale 0.8s ease-out 0.2s both;
+}
+
+.canvas-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.footer {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 100;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9rem;
+  font-weight: 300;
+  max-width: 400px;
+}
+
+.footer-content {
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  padding: 0;
+  border: 1px solid rgba(255, 105, 180, 0.3);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: fadeInScale 0.6s ease-out;
+}
+
+.prover-stats {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+}
+
+.prover-stats::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 105, 180, 0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+.prover-stats:hover::before {
+  left: 100%;
+}
+
+.prover-stats:hover {
+  background: rgba(255, 105, 180, 0.15);
+  color: rgba(255, 255, 255, 0.95);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(255, 105, 180, 0.2);
+}
+
+.stats-icon {
+  font-size: 1.1rem;
+  animation: float 3s ease-in-out infinite;
+}
+
+.stats-text {
+  font-weight: 400;
+}
+
+.stats-arrow {
+  margin-left: auto;
+  font-size: 0.8rem;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.prover-list {
+  border-top: 1px solid rgba(255, 105, 180, 0.2);
+  max-height: 60vh;
+  overflow-y: auto;
+  border-radius: 0 0 12px 12px;
+  animation: slideInUp 0.5s ease-out;
+}
+
+.prover-list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(255, 105, 180, 0.1);
+  animation: fadeInScale 0.6s ease-out 0.1s both;
+}
+
+.prover-list-header h3 {
+  margin: 0;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 600;
+}
+
+.prover-count {
+  font-size: 0.8rem;
+  color: rgba(255, 105, 180, 0.8);
+  font-weight: 500;
+}
+
+.prover-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+  padding: 12px;
+  max-height: 50vh;
+  overflow-y: auto;
+}
+
+.prover-item {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 105, 180, 0.2);
+  border-radius: 8px;
+  padding: 12px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  animation: slideInUp 0.6s ease-out;
+  animation-delay: calc(var(--index, 0) * 0.05s);
+  animation-fill-mode: both;
+}
+
+.prover-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 105, 180, 0.1), transparent);
+  transition: left 0.6s ease;
+}
+
+.prover-item:hover::before {
+  left: 100%;
+}
+
+.prover-item:hover {
+  background: rgba(255, 105, 180, 0.12);
+  border-color: rgba(255, 105, 180, 0.5);
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 8px 25px rgba(255, 105, 180, 0.3);
+}
+
+.prover-item.selected {
+  background: rgba(255, 105, 180, 0.18);
+  border-color: rgba(255, 105, 180, 0.7);
+  animation: glowPulse 2s ease-in-out infinite;
+}
+
+.prover-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.prover-name {
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.9rem;
+  transition: color 0.3s ease;
+}
+
+.prover-item:hover .prover-name {
+  color: rgba(255, 255, 255, 1);
+}
+
+.prover-status {
+  font-size: 0.7rem;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: 500;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+
+.prover-status.active {
+  background: rgba(76, 175, 80, 0.2);
+  color: #4CAF50;
+  border: 1px solid rgba(76, 175, 80, 0.3);
+}
+
+.prover-status.maintenance {
+  background: rgba(255, 152, 0, 0.2);
+  color: #FF9800;
+  border: 1px solid rgba(255, 152, 0, 0.3);
+}
+
+.prover-status.inactive {
+  background: rgba(244, 67, 54, 0.2);
+  color: #F44336;
+  border: 1px solid rgba(244, 67, 54, 0.3);
+}
+
+.prover-item-location {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 4px;
+  transition: color 0.3s ease;
+}
+
+.prover-item:hover .prover-item-location {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.prover-item-uptime {
+  font-size: 0.75rem;
+  color: rgba(255, 105, 180, 0.8);
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.prover-item:hover .prover-item-uptime {
+  color: rgba(255, 105, 180, 1);
+}
+
+.footer p {
+  margin: 0;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Enhanced Animations */
+@keyframes slideInUp {
   from {
-    transform: rotate(0deg);
+    opacity: 0;
+    transform: translateY(30px) scale(0.9);
   }
   to {
-    transform: rotate(360deg);
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes enhancedPulse {
+  0%, 100% { 
+    transform: scale(1); 
+    opacity: 0.8; 
+  }
+  50% { 
+    transform: scale(1.1); 
+    opacity: 1; 
+  }
+}
+
+@keyframes float {
+  0%, 100% { 
+    transform: translateY(0px); 
+  }
+  50% { 
+    transform: translateY(-5px); 
+  }
+}
+
+@keyframes glowPulse {
+  0%, 100% { 
+    box-shadow: 0 0 20px rgba(255, 105, 180, 0.3);
+  }
+  50% { 
+    box-shadow: 0 0 30px rgba(255, 105, 180, 0.6);
+  }
+}
+
+/* Enhanced Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #FF69B4, #FF1493);
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #FF1493, #FF69B4);
+  transform: scale(1.1);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .header h1 {
+    font-size: 1.5rem;
+  }
+  
+  .header p {
+    font-size: 0.9rem;
+  }
+  
+  .footer {
+    font-size: 0.8rem;
+    top: 10px;
+    right: 10px;
+    left: 10px;
+    max-width: none;
+  }
+
+  .prover-grid {
+    max-height: 40vh;
+  }
+
+  .prover-item {
+    padding: 10px;
   }
 }

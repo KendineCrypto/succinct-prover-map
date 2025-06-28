@@ -1,46 +1,198 @@
-# Getting Started with Create React App
+# 🌍 Succinct Labs Prover Map
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A beautiful, interactive 3D globe visualization for tracking Succinct Labs provers worldwide in real-time. Built with React, Three.js, and TypeScript.
 
-## Available Scripts
+![Prover Map Demo](https://img.shields.io/badge/Status-Active-brightgreen)
+![React](https://img.shields.io/badge/React-18.2.0-blue)
+![Three.js](https://img.shields.io/badge/Three.js-r152-orange)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue)
 
-In the project directory, you can run:
+## ✨ Features
 
-### `npm start`
+### 🌟 Interactive 3D Globe
+- **Realistic Earth visualization** with custom pink texture
+- **Smooth camera controls** with orbit, pan, and zoom
+- **Optimized performance** with 25+ prover locations
+- **Responsive design** for all devices
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### 🎯 Prover Tracking
+- **25 global prover locations** with real-time data
+- **Interactive markers** with hover animations
+- **Status indicators** (Active, Maintenance, Inactive)
+- **Detailed prover information** (Location, IP, Uptime, etc.)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### 🎨 Beautiful Animations
+- **Staggered entrance animations** for prover list
+- **Dramatic hover effects** with color transitions
+- **Smooth camera movements** with easing functions
+- **Particle effects** and glow animations
 
-### `npm test`
+### 📊 Data Visualization
+- **Data transfer lines** between nearest neighbors
+- **Animated light beams** from prover locations
+- **Real-time connectivity visualization**
+- **Optimized line rendering** for performance
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 🎮 User Experience
+- **Interactive prover list** with search and filter
+- **One-click navigation** to any prover location
+- **Smooth transitions** and micro-interactions
+- **Mobile-responsive** design
 
-### `npm run build`
+## 🚀 Quick Start
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Prerequisites
+- Node.js (v16 or higher)
+- npm or yarn
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Installation
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. **Clone the repository**
+```bash
+git clone https://github.com/yourusername/succinct-world.git
+cd succinct-world
+```
 
-### `npm run eject`
+2. **Install dependencies**
+```bash
+npm install
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+3. **Start the development server**
+```bash
+npm start
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+4. **Open your browser**
+Navigate to [http://localhost:3000](http://localhost:3000)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Build for Production
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```bash
+npm run build
+```
 
-## Learn More
+## 🎯 Usage
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Navigation
+- **Mouse/Touch**: Rotate, pan, and zoom the globe
+- **Click on markers**: View prover details and navigate to location
+- **Top-right menu**: Browse all provers and filter by status
+- **Keyboard**: Use arrow keys for camera controls
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Features
+- **Hover over markers**: See dramatic color animations
+- **Click prover list**: Navigate to any prover instantly
+- **View details**: See uptime, location, and technical info
+- **Real-time data**: Monitor prover status and performance
+
+## 🛠️ Technology Stack
+
+- **Frontend**: React 18.2.0, TypeScript 5.0
+- **3D Graphics**: Three.js r152, @react-three/fiber, @react-three/drei
+- **Styling**: CSS3 with custom animations
+- **Build Tool**: Create React App
+- **Package Manager**: npm
+
+## 📁 Project Structure
+
+```
+succinct-world/
+├── public/                 # Static assets
+│   ├── pink_earth_texture.jpg
+│   └── index.html
+├── src/
+│   ├── components/         # React components
+│   │   ├── Globe.tsx      # 3D Earth visualization
+│   │   ├── ProverMarker.tsx # Interactive markers
+│   │   └── ProverDetails.tsx # Modal details
+│   ├── data/              # Data files
+│   │   └── provers.json   # Prover locations
+│   ├── types/             # TypeScript definitions
+│   ├── utils/             # Utility functions
+│   └── App.tsx           # Main application
+├── package.json
+└── README.md
+```
+
+## 🎨 Customization
+
+### Adding New Provers
+Edit `src/data/provers.json`:
+```json
+{
+  "id": "prover-026",
+  "name": "New Prover",
+  "latitude": 40.7128,
+  "longitude": -74.0060,
+  "country": "United States",
+  "city": "New York",
+  "uptime": 99.5,
+  "startDate": "2024-03-01",
+  "status": "active",
+  "ip": "192.168.1.125"
+}
+```
+
+### Customizing Colors
+Modify CSS variables in `src/App.css`:
+```css
+:root {
+  --primary-color: #FF69B4;
+  --secondary-color: #FF1493;
+  --accent-color: #FFB6C1;
+}
+```
+
+## 🚀 Deployment
+
+### GitHub Pages
+1. Add to `package.json`:
+```json
+{
+  "homepage": "https://yourusername.github.io/succinct-world",
+  "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
+  }
+}
+```
+
+2. Deploy:
+```bash
+npm run deploy
+```
+
+### Netlify/Vercel
+- Connect your GitHub repository
+- Build command: `npm run build`
+- Publish directory: `build`
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## 📝 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- **Succinct Labs** for the prover network concept
+- **Three.js community** for 3D graphics inspiration
+- **React Three Fiber** for React integration
+- **Create React App** for the development environment
+
+## 📞 Support
+
+- **Issues**: [GitHub Issues](https://github.com/yourusername/succinct-world/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/yourusername/succinct-world/discussions)
+- **Email**: your.email@example.com
+
+---
+
+⭐ **Star this repository if you found it helpful!**
