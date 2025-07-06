@@ -191,8 +191,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 - **Issues**: [GitHub Issues](https://github.com/KendineCrypto/succinct-prover-map/issues)
 - **Discussions**: [GitHub Discussions](https://github.com/KendineCrypto/succinct-prover-map/discussions)
-- **Email**: your.email@example.com
-
+- **Twitter**: https://x.com/KendineCrypto_
 ---
 
 ⭐ **Star this repository if you found it helpful!**
